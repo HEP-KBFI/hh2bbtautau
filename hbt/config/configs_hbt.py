@@ -1247,12 +1247,16 @@ def add_config(
             main_campaign, sub_campaign = full_campaign.split("-", 1)
             path = f"store/{dataset_inst.data_source}/{main_campaign}/{dataset_id}/{tier}/{sub_campaign}/0"
 
+            # # create the lfn base directory, local or remote
+            # dir_cls = law.LocalDirectoryTarget
+            # fs = f"local_fs_{cfg.campaign.x.custom['name']}"
+            # if not law.config.has_section(fs):
+            #     dir_cls = law.wlcg.WLCGDirectoryTarget
+            #     fs = f"wlcg_fs_{cfg.campaign.x.custom['name']}"
+            # lfn_base = dir_cls(path, fs=fs)
             # create the lfn base directory, local or remote
-            dir_cls = law.LocalDirectoryTarget
-            fs = f"local_fs_{cfg.campaign.x.custom['name']}"
-            if not law.config.has_section(fs):
-                dir_cls = law.wlcg.WLCGDirectoryTarget
-                fs = f"wlcg_fs_{cfg.campaign.x.custom['name']}"
+            dir_cls = law.wlcg.WLCGDirectoryTarget
+            fs = f"wlcg_fs_{cfg.campaign.x.custom['name']}"
             lfn_base = dir_cls(path, fs=fs)
 
             # loop though files and interpret paths as lfns
