@@ -272,7 +272,7 @@ def add_variables(config: od.Config) -> None:
             x_title=rf"{proc.upper()} output node, res. DNN",
         )
 
-    #VBF vars
+    # VBF vars
     config.add_variable(
         name="vbfjet_pt",
         expression="VBFJet.pt",
