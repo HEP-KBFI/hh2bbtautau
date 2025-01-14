@@ -12,11 +12,11 @@ set_ak_column_f32 = functools.partial(set_ak_column, value_type=np.float32)
 
 @producer(
     uses=(
-        "Jet.*", "VBFJet.*", 
-        attach_coffea_behavior, 
+        "Jet.*", "VBFJet.*",
+        attach_coffea_behavior,
     ),
     produces={
-        "vbfjj.*","vbfjj_dr", 
+        "vbfjj.*", "vbfjj_dr",
     },
 )
 def vbfjj(self: Producer, events: ak.Array, **kwargs) -> ak.Array:
@@ -53,7 +53,6 @@ def vbfjj(self: Producer, events: ak.Array, **kwargs) -> ak.Array:
             target_column,
             ak.where(mask, column_values, EMPTY_FLOAT),
         )
-        
     # write out variables to the corresponding events array, applying certain masks
     events = save_interesting_properties(events, "vbfjj.mass", vbfjj.mass, vbfjet_mask)
     events = save_interesting_properties(events, "vbfjj_dr", vbfjj_dr, vbfjet_mask)
