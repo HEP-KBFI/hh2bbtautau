@@ -271,3 +271,80 @@ def add_variables(config: od.Config) -> None:
             binning=(5000, 0.0, 1.0),
             x_title=rf"{proc.upper()} output node, res. DNN",
         )
+
+    #VBF vars
+    config.add_variable(
+        name="vbfjet_pt",
+        expression="VBFJet.pt",
+        null_value=EMPTY_FLOAT,
+        binning=(60, 0.0, 600.0),
+        unit="GeV",
+        x_title=r"all VBFJet $p_{T}$",
+    )
+
+    config.add_variable(
+        name="vbfjet1_pt",
+        expression="VBFJet.pt[:,0]",
+        null_value=EMPTY_FLOAT,
+        binning=(60, 0.0, 600.0),
+        unit="GeV",
+        x_title=r"VBFJet 1 $p_{T}$",
+    )
+
+    config.add_variable(
+        name="vbfjet2_pt",
+        expression="VBFJet.pt[:,1]",
+        null_value=EMPTY_FLOAT,
+        binning=(60, 0.0, 600.0),
+        unit="GeV",
+        x_title=r"VBFJet 2 $p_{T}$",
+    )
+
+    config.add_variable(
+        name="vbfjet_eta",
+        expression="VBFJet.eta",
+        null_value=EMPTY_FLOAT,
+        binning=(60, -6.0, 6.0),
+        x_title=r"all VBFJet $\eta$",
+    )
+
+    config.add_variable(
+        name="vbfjet1_eta",
+        expression="VBFJet.eta[:,0]",
+        null_value=EMPTY_FLOAT,
+        binning=(60, -6.0, 6.0),
+        x_title=r"VBFJet 1 $\eta$",
+    )
+
+    config.add_variable(
+        name="vbfjet2_eta",
+        expression="VBFJet.eta[:,1]",
+        null_value=EMPTY_FLOAT,
+        binning=(60, -6.0, 6.0),
+        x_title=r"VBFJet 2 $\eta$",
+    )
+
+    config.add_variable(
+        name="vbfjet_mass",
+        expression="VBFJet.mass",
+        null_value=EMPTY_FLOAT,
+        binning=(40, 0, 1000.0),
+        unit="GeV",
+        x_title=r"VBF $m_{j}$",
+    )
+
+    config.add_variable(
+        name="vbfjj_mass",
+        expression="vbfjj.mass",
+        binning=(25, 500, 3000.0),
+        unit="GeV",
+        x_title=r"VBF $m_{jj}$",
+    )
+
+    config.add_variable(
+        name="vbfjj_dr",
+        expression="vbfjj_dr",
+        binning=(8, 2, 10),
+        unit="",
+        x_title=r"$\Delta R_{jj}^{VBF}$",
+    )
